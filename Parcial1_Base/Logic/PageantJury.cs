@@ -12,7 +12,8 @@ namespace Parcial1_Base.Logic
         /// <summary>
         /// Returns the total contestants count for a pageant round.
         /// </summary>
-        public int TotalContestants { get => contestants.Count; }
+        public int TotalContestants { get => Contestants.Count; }
+        public List<Doll> Contestants { get => contestants; set => contestants = value; }
 
         /// <summary>
         /// Adds a contestant to the pageant.
@@ -23,6 +24,12 @@ namespace Parcial1_Base.Logic
         {
             bool result = false;
 
+            if(d.TieneVestido==true)
+            {
+                Contestants.Add(d);
+                result = true;
+            }
+
             return result;
         }
 
@@ -31,7 +38,7 @@ namespace Parcial1_Base.Logic
         /// </summary>
         public void ClearContestants()
         {
-            contestants.Clear();
+            Contestants.Clear();
         }
 
         /// <summary>
@@ -42,15 +49,17 @@ namespace Parcial1_Base.Logic
         {
             Doll winner = null;
 
-            switch (contestants.Count)
+            switch (Contestants.Count)
             {
                 case 1:
                     // Single contestant is deemed winner, no matter its score.
-                    winner = contestants[0];
+                    winner = Contestants[0];
                     break;
 
                 default:
                     // Sorts the contestants and return the one with the highest style score.
+
+
                     break;
             }
 

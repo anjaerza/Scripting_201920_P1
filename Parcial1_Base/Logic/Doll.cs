@@ -6,7 +6,13 @@ namespace Parcial1_Base.Logic
     /// Definition for the player's avatar. Players dress up a doll to win the contest.
     /// </summary>
     public class Doll : IClonable<Doll>
+
+
     {
+
+        public bool TieneVestido { get; protected set; }
+
+
         /// <summary>
         /// The accessories collection.
         /// </summary>
@@ -25,18 +31,29 @@ namespace Parcial1_Base.Logic
         /// <summary>
         /// The total accessories count worn by the doll.
         /// </summary>
-        public int TotalAccessories { get => accessories.Count; }
+        public int TotalAccessories { get => Accessories.Count; }
 
-        public int BraceletCount { get => 0; }
+        public int BraceletCount { get; protected set; }
 
         /// <summary>
         /// The total style score, affected by each worn accessory.
         /// </summary>
-        public int Style { get => 0; }
+        public int Style { get; }
+
+        public List<Accessory> Accessories { get => accessories; protected set => accessories = value; }
+
+        public Doll()
+        {
+        }
 
         public Doll(string name)
         {
             Name = name;
+            BraceletCount = 0;
+            Style = 0;
+            TieneVestido = false;
+
+
         }
 
         /// <summary>
@@ -58,7 +75,47 @@ namespace Parcial1_Base.Logic
         /// <returns>True if the doll successfully wore the accessory. False otherwise</returns>
         public bool Wear(Accessory a)
         {
-            return false;
+
+            Dress vestido = Accessories[0] as Dress;
+
+            bool resultado = false;
+            if (a is Bracelet && TieneVestido== true)
+            {
+
+                if(BraceletCount>=5)
+                {
+                    resultado=false;
+                    
+                }
+                else
+                {   
+                    BraceletCount++;
+                    Accessories.Add(a);
+                    resultado=true;
+                }
+
+
+            }
+            if(a is Dress)
+            {
+                if (TieneVestido == true)
+                {
+                    resultado=false;
+                }
+
+                else
+                {
+                    TieneVestido = true;
+                    Accessories.Add(a);
+                }
+            }
+
+            if(a is Purse)
+            {
+
+            }
+
+            return resultado; 
         }
 
         /// <summary>
