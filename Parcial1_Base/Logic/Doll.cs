@@ -79,10 +79,12 @@ namespace Parcial1_Base.Logic
             Dress vestido = Accessories[0] as Dress;
 
             bool resultado = false;
+            int maxbrace=5;
+           
             if (a is Bracelet && TieneVestido== true)
             {
 
-                if(BraceletCount>=5)
+                if(BraceletCount>=maxbrace)
                 {
                     resultado=false;
                     
