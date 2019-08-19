@@ -1,0 +1,23 @@
+Feedback
+
+* Hay lógica que agrega concursantes, pero no valida que sean hasta 4 o distintas (0.1 / 0.25)
+* No hay lógica para determinar a la concursante ganadora. (0.0 / 0.25)
+* Se hace una propiedad para indicar que la muñeca tiene un vestido equipado y se usa para validar antes de agregar al concurso, pero se deja en desuso la propiedad provista CanParticipate que básicamente es para eso (0.5 / 0.5)
+* Hay lógica para equipar accesorios, pero esa lógica no equipa pulseras ni bolsos.
+* Hay lógica para determinar si se está equipando un vestido al tener ya uno equipado (0.25 / 0.25)
+* No hay lógica para determinar que un collar puede equiparse con ciertos vestidos (0.0 / 0.25)
+* No hay lógica para incrementar el puntaje de estilo que da un bolso si es equipado con ciertos vestidos (0.0 / 0.25)
+* No hay lógica que limite las pulseras según el vestido equipado según el enunciado. Se valida, para todos los casos, que se puedan equipar hasta 5  pulseras, pero esto no satisface la funcionalidad pedida (0.0 / 1.0)
+* No hay lógica de desequipamiento de accesorios (0.0 / 0.25); en consecuencia, tampoco hay lógica que desequipe todos los accesorios si el vestido es desequipado (0.0 / 0.5)
+
+Total funcionalidad: 0.85 / 3.5
+
+Diseño orientado a objetos
+* No hay necesidad de exponer todo. Los accesorios no tienen por qué ser leídos por otro lado; además que en ninguna parte del código se hace uso de ese accesor.
+* Por qué todos los if de Doll.Wear() se evalúan? Dress, Purse, Necklace y Bracelet son Accessory, pero una vez se valide que un accesorio es de un tipo de esos, no puede ser del resto de tipos.
+* Dado que no hay lógica que satisfaga la funcionalidad, no puede haber consideración al diseño orientado a objetos aplicado (0.0 / 1.5)
+
+Total diseño orientado a objetos: 0.0 / 1.5
+
+
+Total: (0.85 / 5.0)
